@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>709</width>
+    <height>578</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Circuitos amplificadores</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+	padding: 4px;
+	background-color: transparent;
+	border-radius: 8px;
+}
+
+QPushButton:hover {
+	background-color: #ccc;
+	color: white;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin">
+     <number>16</number>
+    </property>
+    <property name="topMargin">
+     <number>8</number>
+    </property>
+    <property name="rightMargin">
+     <number>16</number>
+    </property>
+    <property name="bottomMargin">
+     <number>16</number>
+    </property>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QListWidget" name="listWidget"/>
+    </item>
+   </layout>
+  </widget>
+  <action name="actionSair">
+   <property name="text">
+    <string>Sair</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="text">
+    <string>Sobre</string>
+   </property>
+  </action>
+  <action name="actionVerificar_se_h_atualiza_es">
+   <property name="text">
+    <string>Verificar se há atualizações</string>
+   </property>
+  </action>
+  <action name="action_quit">
+   <property name="text">
+    <string>Sair</string>
+   </property>
+  </action>
+  <action name="action_settings">
+   <property name="text">
+    <string>Configurações</string>
+   </property>
+  </action>
+  <action name="action_export_history">
+   <property name="text">
+    <string>Exportar histórico</string>
+   </property>
+  </action>
+  <action name="action_advanced_search">
+   <property name="text">
+    <string>Pesquisa avançada</string>
+   </property>
+  </action>
+  <action name="action_install_version">
+   <property name="text">
+    <string>Instalar versão</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
