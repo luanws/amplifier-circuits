@@ -12,3 +12,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().setupUi(self)
 
         self.setWindowIcon(QtGui.QIcon('icon.ico'))
+
+        self.__view_model = MainViewModel()
+
+        amplifier_names = self.__view_model.amplifier_names
+        self.amplifier_polarizations_combo_box.addItems(amplifier_names)

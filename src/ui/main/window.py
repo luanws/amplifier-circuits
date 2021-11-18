@@ -19,9 +19,9 @@ class Ui_MainWindow(object):
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(16, 8, 16, 16)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout.addWidget(self.pushButton)
+        self.amplifier_polarizations_combo_box = QtWidgets.QComboBox(self.centralwidget)
+        self.amplifier_polarizations_combo_box.setObjectName("amplifier_polarizations_combo_box")
+        self.verticalLayout.addWidget(self.amplifier_polarizations_combo_box)
         self.listWidget = QtWidgets.QListWidget(self.centralwidget)
         self.listWidget.setObjectName("listWidget")
         self.verticalLayout.addWidget(self.listWidget)
@@ -46,8 +46,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Circuitos amplificadores"))
-        self.pushButton.setText(_translate("MainWindow", "PushButton"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Projetor bíblico"))
         self.actionSair.setText(_translate("MainWindow", "Sair"))
         self.action_about.setText(_translate("MainWindow", "Sobre"))
         self.actionVerificar_se_h_atualiza_es.setText(_translate("MainWindow", "Verificar se há atualizações"))
