@@ -1,11 +1,15 @@
+from typing import List
+
 from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
 from src.ui.main.view_model import MainViewModel
+from src.ui.main.widgets.parameter_widget import ParameterWidget
 from src.ui.main.window import Ui_MainWindow
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     __view_model: MainViewModel
+    parameter_widgets: List[ParameterWidget] = []
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -32,11 +36,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.configure_inputs()
 
     def configure_inputs(self):
-        for i in reversed(range(self.input_vertical_layout.count())):
-            self.input_vertical_layout.itemAt(i).widget().setParent(None)
+        for parameter_widget in self.parameter_widgets:
+            self.input_vertical_layout.removeWidget(parameter_widget)
+        self.parameter_widgets = []
 
         parameter_names = self.__view_model.amplifier_class.input.get_parameter_names()
         for parameter_name in parameter_names:
-            label = QtWidgets.QLabel(self)
-            label.setText(parameter_name)
-            self.input_vertical_layout.addWidget(label)
+            parameter_widget = ParameterWidget(
+                self, parameter_name=parameter_name)
+            self.parameter_widgets.append(parameter_widget)
+            self.input_vertical_layout.addWidget(parameter_widget)
