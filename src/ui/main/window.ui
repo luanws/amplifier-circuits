@@ -11,20 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Projetor bíblico</string>
+   <string>Circuitos amplificadores</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QPushButton {
-	padding: 4px;
-	background-color: transparent;
-	border-radius: 8px;
-}
-
-QPushButton:hover {
-	background-color: #ccc;
-	color: white;
-}
-</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
