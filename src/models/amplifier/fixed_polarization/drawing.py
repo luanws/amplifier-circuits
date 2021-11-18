@@ -1,0 +1,88 @@
+from schemdraw import Drawing
+from schemdraw.elements import elm
+
+from .input import Input
+
+
+def draw_void():
+    drawing = Drawing()
+
+    drawing += (transistor := elm.transistors.BjtNpn().right())
+
+    drawing.push()
+    drawing += elm.Resistor().up().label('Rc')
+    drawing += elm.Line().left().length(drawing.unit/2)
+
+    drawing.push()
+    drawing += elm.Dot()
+    drawing += elm.SourceV().up().reverse().label('Vcc')
+    drawing += elm.Ground().left()
+
+    drawing.pop()
+    drawing += elm.Line().left().length(drawing.unit/2)
+    drawing += elm.Resistor().down().label('Rb')
+    drawing += elm.Line().down().length(0.24*drawing.unit)
+    drawing += elm.Dot()
+
+    drawing.push()
+    drawing += elm.Line().to(transistor.base)
+
+    drawing.pop()
+    drawing += elm.Line().left().length(drawing.unit/4)
+    drawing += elm.Capacitor().left().reverse().label('Ci')
+    drawing += elm.Line().left().length(drawing.unit/4)
+    drawing += elm.SourceSin().down().reverse().label('Vi')
+    drawing += elm.Ground()
+    drawing += elm.Line().at(transistor.emitter).down().length(3*drawing.unit/4)
+    drawing += elm.Ground()
+
+    drawing.pop()
+    drawing += elm.Dot()
+    drawing += elm.Capacitor().right().label('Co')
+    drawing += elm.Resistor().down().label('Rl')
+    drawing += elm.Line().down().length(drawing.unit/5)
+    drawing += elm.Ground()
+
+    return drawing.draw()
+
+
+def draw(amplifier_input: Input):
+    drawing = Drawing()
+
+    drawing += (transistor := elm.transistors.BjtNpn().right())
+
+    drawing.push()
+    drawing += elm.Resistor().up().label(str(amplifier_input.Rc))
+    drawing += elm.Line().left().length(drawing.unit/2)
+
+    drawing.push()
+    drawing += elm.Dot()
+    drawing += elm.SourceV().up().reverse().label(str(amplifier_input.Vcc))
+    drawing += elm.Ground().left()
+
+    drawing.pop()
+    drawing += elm.Line().left().length(drawing.unit/2)
+    drawing += elm.Resistor().down().label(str(amplifier_input.Rb))
+    drawing += elm.Line().down().length(0.24*drawing.unit)
+    drawing += elm.Dot()
+
+    drawing.push()
+    drawing += elm.Line().to(transistor.base)
+
+    drawing.pop()
+    drawing += elm.Line().left().length(drawing.unit/4)
+    drawing += elm.Capacitor().left().reverse().label('Ci')
+    drawing += elm.Line().left().length(drawing.unit/4)
+    drawing += elm.SourceSin().down().reverse().label('Vi')
+    drawing += elm.Ground()
+    drawing += elm.Line().at(transistor.emitter).down().length(3*drawing.unit/4)
+    drawing += elm.Ground()
+
+    drawing.pop()
+    drawing += elm.Dot()
+    drawing += elm.Capacitor().right().label('Co')
+    drawing += elm.Resistor().down().label('Rl')
+    drawing += elm.Line().down().length(drawing.unit/5)
+    drawing += elm.Ground()
+
+    return drawing.draw()
