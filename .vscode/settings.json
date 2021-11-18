@@ -10,8 +10,13 @@
         "**/.qt_for_python": true,
     },
     "cSpell.words": [
+        "Avnl",
         "isnumeric",
         "pymenu",
-        "qtawesome"
-    ]
+        "qtawesome",
+        "schemdraw"
+    ],
+    "python.linting.flake8Enabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true
 }
