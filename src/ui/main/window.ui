@@ -44,7 +44,7 @@ QPushButton:hover {
      <widget class="QComboBox" name="amplifier_polarizations_combo_box"/>
     </item>
     <item>
-     <widget class="QListWidget" name="listWidget"/>
+     <layout class="QVBoxLayout" name="input_vertical_layout"/>
     </item>
    </layout>
   </widget>

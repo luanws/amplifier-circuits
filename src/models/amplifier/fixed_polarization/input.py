@@ -1,3 +1,5 @@
+from typing import List
+
 from src.models.amplifier.input import Input as _Input
 
 
@@ -14,3 +16,7 @@ class Input(_Input):
         self.beta = beta
         self.ro = ro
         self.Rb = Rb
+
+    @staticmethod
+    def get_parameter_names() -> List[str]:
+        return ['Vcc', 'Rc', 'beta', 'ro', 'Rb']

@@ -6,11 +6,11 @@ from .input import Input
 
 
 class Amplifier(_Amplifier):
-    input: Input
+    input: Input = Input(0, 0, 0, 0, 0)
 
-    def __init__(self, amplifier_input: Input) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         super().__init__()
-        self.input = amplifier_input
+        self.input = Input(*args, **kwargs)
 
     def __call__(self) -> Output:
         Ibq = (self.input.Vcc - 0.7)/self.input.Rb

@@ -1,5 +1,8 @@
-from abc import ABC
+from abc import ABC, abstractstaticmethod
+from typing import List
 
 
 class Input(ABC):
-    pass
+    @abstractstaticmethod
+    def get_parameter_names() -> List[str]:
+        pass
