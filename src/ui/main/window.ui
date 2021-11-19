@@ -44,6 +44,9 @@
      </widget>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="circuits_layout"/>
+    </item>
+    <item>
      <widget class="QWidget" name="widget" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">

@@ -24,7 +24,7 @@ class MainViewModel:
     def set_amplifier_class_by_polarization_name(self, polarization: str) -> None:
         self.amplifier_class = self.amplifiers_dict[polarization]
 
-    def calculate(self, parameters: Dict[str, str]) -> Input:
+    def get_amplifier(self, parameters: Dict[str, str]) -> Amplifier:
         for key in parameters.keys():
             parameters[key] = float(parameters[key])
-        return self.amplifier_class(**parameters)()
+        return self.amplifier_class(**parameters)
