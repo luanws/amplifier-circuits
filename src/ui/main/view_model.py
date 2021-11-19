@@ -40,9 +40,9 @@ class MainViewModel:
         ax[0].set_xlabel('t')
         ax[0].set_ylabel('V')
         ax[0].set_title('Vi')
-        ax[0].plot(t, Vi, label='Vi')
+        ax[0].plot(t, Vi, label='Vi', color='r', linewidth=2)
         ax[1].set_title('Vo')
-        ax[1].plot(t, Vo, label='Vo')
+        ax[1].plot(t, Vo, label='Vo', color='g', linewidth=2)
         ax[1].set_xlabel('t')
         ax[1].set_ylabel('V')
 
