@@ -30,6 +30,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.parameters_layout.addWidget(self.amplifier_input_widget)
         self.parameters_layout.addWidget(self.amplifier_output_widget)
 
+        self.circuits_layout = QtWidgets.QHBoxLayout()
+        self.graphics_widget.setLayout(self.circuits_layout)
+
         self.configure_events()
         self.render_inputs()
         self.render_svg_graphics()

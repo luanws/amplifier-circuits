@@ -16,7 +16,7 @@ QLineEdit {
     border: none;
     border-radius: 8px;
     background-color: @containerBackgroundColor;
-    color: black;
+    color: @textColor;
     font-size: 10pt;
 }
 
@@ -25,7 +25,7 @@ QTextEdit {
     border: none;
     border-radius: 8px;
     background-color: @containerBackgroundColor;
-    color: black;
+    color: @textColor;
     font-size: 10pt;
 }
 
