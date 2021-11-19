@@ -13,15 +13,23 @@ class Amplifier(_Amplifier):
         self.input = Input(*args, **kwargs)
 
     def __call__(self) -> Output:
-        R_line = 1/((1/self.input.R1) + (1/self.input.R2))
-        Vb = self.input.Vcc*self.input.R2/(self.input.R1 + self.input.R2)
+        Vcc = self.input.Vcc
+        beta = self.input.beta
+        ro = self.input.ro
+        R1 = self.input.R1
+        R2 = self.input.R2
+        Rc = self.input.Rc
+        Re = self.input.Re
+
+        R_line = 1/((1/R1) + (1/R2))
+        Vb = Vcc*R2/(R1 + R2)
         Vbe = 0.7
         Ve = Vb - Vbe
-        Ieq = Ve/self.input.Re
+        Ieq = Ve/Re
 
-        Zo = 1/((1/self.input.ro) + (1/self.input.Rc))
+        Zo = 1/((1/ro) + (1/Rc))
         re = 26e-3/Ieq
-        Zi = 1/((1/R_line) + (1/(self.input.beta*re)))
+        Zi = 1/((1/R_line) + (1/(beta*re)))
         Avnl = -Zo/re
 
         return Output(re, Zi, Zo, Avnl)
