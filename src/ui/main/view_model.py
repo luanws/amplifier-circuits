@@ -15,7 +15,6 @@ class MainViewModel:
 
     def __init__(self) -> None:
         self.amplifier_class = next(iter(self.amplifiers_dict.values()))
-        print(self.amplifier_class)
 
     @property
     def amplifier_names(self) -> List[str]:
