@@ -26,7 +26,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.input_vertical_layout.addWidget(self.amplifier_input_widget)
 
         self.configure_events()
-        self.configure_inputs()
+        self.render_inputs()
 
     def configure_events(self):
         self.amplifier_polarizations_combo_box.currentTextChanged.connect(
@@ -36,8 +36,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         polarization = self.amplifier_polarizations_combo_box.currentText()
         self.__view_model.set_amplifier_class_by_polarization_name(
             polarization)
-        self.configure_inputs()
+        self.render_inputs()
 
-    def configure_inputs(self):
+    def render_inputs(self):
         parameter_names = self.__view_model.amplifier_class.input.get_parameter_names()
         self.amplifier_input_widget.parameter_names = parameter_names
