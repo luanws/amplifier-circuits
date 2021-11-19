@@ -25,7 +25,6 @@ class MainViewModel:
         self.amplifier_class = self.amplifiers_dict[polarization]
 
     def calculate(self, parameters: Dict[str, str]) -> Input:
-        self.amplifier_class.draw_void()
         for key in parameters.keys():
             parameters[key] = float(parameters[key])
         return self.amplifier_class(**parameters)()
