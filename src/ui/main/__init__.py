@@ -40,13 +40,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.__view_model.set_amplifier_class_by_polarization_name(
             polarization)
         self.render_inputs()
+        self.amplifier_output_widget.clear()
 
     def calculate(self):
         try:
             parameters = self.amplifier_input_widget.get_parameters_dict()
             output = self.__view_model.calculate(parameters)
             self.amplifier_output_widget.output = output
-        except ValueError as e:
+        except ValueError:
             self.show_error(
                 'Dados de entrada incorretos',
                 'Preencha os dados de entrada corretamente'
