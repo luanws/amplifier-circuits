@@ -3,13 +3,13 @@ from typing import List
 from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
 from src.ui.main.view_model import MainViewModel
-from src.ui.main.widgets.parameter_widget import ParameterWidget
+from src.ui.main.widgets.amplifier_input_widget import AmplifierInputWidget
 from src.ui.main.window import Ui_MainWindow
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     __view_model: MainViewModel
-    parameter_widgets: List[ParameterWidget] = []
+    amplifier_input_widget: AmplifierInputWidget
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -21,6 +21,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         amplifier_names = self.__view_model.amplifier_names
         self.amplifier_polarizations_combo_box.addItems(amplifier_names)
+
+        self.amplifier_input_widget = AmplifierInputWidget(self)
+        self.input_vertical_layout.addWidget(self.amplifier_input_widget)
 
         self.configure_events()
         self.configure_inputs()
@@ -36,13 +39,5 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.configure_inputs()
 
     def configure_inputs(self):
-        for parameter_widget in self.parameter_widgets:
-            self.input_vertical_layout.removeWidget(parameter_widget)
-        self.parameter_widgets = []
-
         parameter_names = self.__view_model.amplifier_class.input.get_parameter_names()
-        for parameter_name in parameter_names:
-            parameter_widget = ParameterWidget(
-                self, parameter_name=parameter_name)
-            self.parameter_widgets.append(parameter_widget)
-            self.input_vertical_layout.addWidget(parameter_widget)
+        self.amplifier_input_widget.parameter_names = parameter_names

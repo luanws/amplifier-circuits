@@ -3,17 +3,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(709, 578)
-        MainWindow.setStyleSheet("QPushButton {\n"
-"    padding: 4px;\n"
-"    background-color: transparent;\n"
-"    border-radius: 8px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #ccc;\n"
-"    color: white;\n"
-"}\n"
-"")
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -22,24 +12,17 @@ class Ui_MainWindow(object):
         self.amplifier_polarizations_combo_box = QtWidgets.QComboBox(self.centralwidget)
         self.amplifier_polarizations_combo_box.setObjectName("amplifier_polarizations_combo_box")
         self.verticalLayout.addWidget(self.amplifier_polarizations_combo_box)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setSpacing(4)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.input_vertical_layout = QtWidgets.QVBoxLayout()
         self.input_vertical_layout.setSpacing(4)
         self.input_vertical_layout.setObjectName("input_vertical_layout")
-        self.horizontalLayout.addLayout(self.input_vertical_layout)
-        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.verticalLayout_3.addLayout(self.input_vertical_layout)
+        self.verticalLayout.addLayout(self.verticalLayout_3)
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton)
-        self.widget = QtWidgets.QWidget(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
-        self.widget.setSizePolicy(sizePolicy)
-        self.widget.setObjectName("widget")
-        self.verticalLayout.addWidget(self.widget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.actionSair = QtWidgets.QAction(MainWindow)
         self.actionSair.setObjectName("actionSair")
@@ -61,7 +44,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Projetor bíblico"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Circuitos amplificadores"))
         self.pushButton.setText(_translate("MainWindow", "PushButton"))
         self.actionSair.setText(_translate("MainWindow", "Sair"))
         self.action_about.setText(_translate("MainWindow", "Sobre"))
