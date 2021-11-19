@@ -47,7 +47,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.__view_model.set_amplifier_class_by_polarization_name(
             polarization)
         self.render_inputs()
-        self.render_circuit_void_svg()
+        self.render_circuits_svg()
         self.amplifier_output_widget.clear()
 
     def calculate(self):
