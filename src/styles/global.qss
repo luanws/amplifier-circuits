@@ -58,13 +58,13 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow, QSpinBox::down-arrow, QTimeEdit::down-arrow, QDateEdit::down-arrow {
-    image: url(res/img/arrow-down.png);
+    image: @arrowDownImage;
     width: 8px;
     height: 8px;
 }
 
 QComboBox::up-arrow, QSpinBox::up-arrow, QTimeEdit::up-arrow, QDateEdit::up-arrow {
-    image: url(res/img/arrow-up.png);
+    image: @arrowUpImage;
     width: 8px;
     height: 8px;
 }

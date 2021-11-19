@@ -1,4 +1,6 @@
-@backgroundColor = #e9ecf1
-@containerBackgroundColor = #fff
+@backgroundColor = #202124
+@containerBackgroundColor = #41444a
 @backgroundColorPushButton = #1d2249
-@textColor = black
+@textColor = white
+@arrowDownImage = url(res/img/arrow-down-white.png)
+@arrowUpImage = url(res/img/arrow-up-white.png)
