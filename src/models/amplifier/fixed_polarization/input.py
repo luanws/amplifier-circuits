@@ -19,4 +19,4 @@ class Input(_Input):
 
     @staticmethod
     def get_parameter_names() -> List[str]:
-        return ['Vcc', 'Rc', 'beta', 'ro', 'Rb']
+        return ['Vcc', 'Rb', 'Rc', 'beta', 'ro']
