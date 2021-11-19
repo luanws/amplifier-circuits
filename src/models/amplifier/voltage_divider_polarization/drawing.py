@@ -32,29 +32,23 @@ def draw_void():
     drawing += elm.Line().left().length(drawing.unit/4)
     drawing += elm.Capacitor().left().reverse().label('C1')
     drawing += elm.Line().left().length(drawing.unit/4)
-    drawing += elm.SourceSin().down().reverse().label('Vi')
-    drawing += elm.Line().right()
-    drawing += elm.Line().right()
-    drawing += elm.Ground()
+    drawing += elm.Dot().label('Vi')
 
     drawing.pop()
     drawing += elm.Resistor().label('R2')
-    drawing += elm.Line().right()
-    drawing += elm.Resistor().label('Re').up().length(0.78*drawing.unit)
-    drawing += elm.Line().right().length(0.5*drawing.unit)
+    drawing += elm.Ground()
+
+    drawing += elm.Resistor().label('Re').down().at(transistor.emitter).length(0.78*drawing.unit)
+    drawing += elm.Ground()
+
+    drawing += elm.Line().right().at(transistor.emitter).length(0.75*drawing.unit)
     drawing += elm.Capacitor().label('Ce').down().length(0.78*drawing.unit)
-
-    drawing.push()
-    drawing += elm.Line().left().length(0.5*drawing.unit)
-
-    drawing.pop()
-    drawing += elm.Line().right().length(0.5*drawing.unit)
-    drawing += elm.Dot()
+    drawing += elm.Ground()
 
     drawing.pop()
     drawing += elm.Dot()
-    drawing += elm.Capacitor().right().label('C2')
-    drawing += elm.Dot()
+    drawing += elm.Capacitor().right().at(transistor.collector).label('C2')
+    drawing += elm.Dot().label('Vo')
 
     return drawing
 
@@ -93,28 +87,22 @@ def draw(amplifier_input: Input):
     drawing += elm.Line().left().length(drawing.unit/4)
     drawing += elm.Capacitor().left().reverse().label('C1')
     drawing += elm.Line().left().length(drawing.unit/4)
-    drawing += elm.SourceSin().down().reverse().label('Vi')
-    drawing += elm.Line().right()
-    drawing += elm.Line().right()
-    drawing += elm.Ground()
+    drawing += elm.Dot().label('Vi')
 
     drawing.pop()
     drawing += elm.Resistor().label(R2)
-    drawing += elm.Line().right()
-    drawing += elm.Resistor().label(Re).up().length(0.78*drawing.unit)
-    drawing += elm.Line().right().length(0.5*drawing.unit)
+    drawing += elm.Ground()
+
+    drawing += elm.Resistor().label(Re).down().at(transistor.emitter).length(0.78*drawing.unit)
+    drawing += elm.Ground()
+
+    drawing += elm.Line().right().at(transistor.emitter).length(0.75*drawing.unit)
     drawing += elm.Capacitor().label('Ce').down().length(0.78*drawing.unit)
-
-    drawing.push()
-    drawing += elm.Line().left().length(0.5*drawing.unit)
-
-    drawing.pop()
-    drawing += elm.Line().right().length(0.5*drawing.unit)
-    drawing += elm.Dot()
+    drawing += elm.Ground()
 
     drawing.pop()
     drawing += elm.Dot()
-    drawing += elm.Capacitor().right().label('C2')
-    drawing += elm.Dot()
+    drawing += elm.Capacitor().right().at(transistor.collector).label('C2')
+    drawing += elm.Dot().label('Vo')
 
     return drawing
