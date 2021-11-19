@@ -45,3 +45,7 @@ class AmplifierOutputWidget(QtWidgets.QWidget):
     def output(self, output: Output):
         self.__output = output
         self.render()
+
+    def clear(self):
+        self.__output = None
+        self.render()
