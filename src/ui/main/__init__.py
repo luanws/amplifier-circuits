@@ -1,8 +1,7 @@
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 from PyQt5 import QtCore, QtGui, QtSvg, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
-from schemdraw import Drawing
 from src.models.amplifier import Amplifier
 from src.ui.main.view_model import MainViewModel
 from src.ui.main.widgets.amplifier_input_widget import AmplifierInputWidget
@@ -14,7 +13,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     __view_model: MainViewModel
     amplifier_input_widget: AmplifierInputWidget
     amplifier_output_widget: AmplifierOutputWidget
-    amplifier: Optional[Amplifier] = None
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -34,7 +32,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.configure_events()
         self.render_inputs()
-        self.render_circuits_svg()
+        self.render_svg_graphics()
 
     def configure_events(self):
         self.amplifier_polarizations_combo_box.currentTextChanged.connect(
@@ -42,21 +40,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.calculate_push_button.clicked.connect(self.calculate)
 
     def on_change_polarization(self):
-        self.amplifier = None
+        self.__view_model.amplifier = None
         polarization = self.amplifier_polarizations_combo_box.currentText()
         self.__view_model.set_amplifier_class_by_polarization_name(
             polarization)
         self.render_inputs()
-        self.render_circuits_svg()
+        self.render_svg_graphics()
         self.amplifier_output_widget.clear()
 
     def calculate(self):
         try:
             parameters = self.amplifier_input_widget.get_parameters_dict()
-            self.amplifier = self.__view_model.get_amplifier(parameters)
-            output = self.amplifier()
+            self.__view_model.amplifier = self.__view_model.get_amplifier(
+                parameters)
+            output = self.__view_model.amplifier()
             self.amplifier_output_widget.output = output
-            self.render_circuits_svg()
+            self.render_svg_graphics()
         except ValueError:
             self.show_error(
                 'Dados de entrada incorretos',
@@ -75,28 +74,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         parameter_names = self.__view_model.amplifier_class.input.get_parameter_names()
         self.amplifier_input_widget.parameter_names = parameter_names
 
-    def render_circuits_svg(self):
+    def render_svg_graphics(self):
         for i in reversed(range(self.circuits_layout.count())):
             self.circuits_layout.itemAt(i).widget().setParent(None)
 
-        drawings_and_paths: List[Tuple[str, Drawing]] = []
-        if self.amplifier is not None:
-            drawings_and_paths.append((
-                'data/circuit.svg',
-                self.amplifier.draw()
-            ))
-            drawings_and_paths.append((
-                'data/circuit_equivalent.svg',
-                self.amplifier.draw_equivalent()
-            ))
-        else:
-            drawings_and_paths.append((
-                'data/circuit.svg',
-                self.__view_model.amplifier_class.draw_void()
-            ))
+        paths: List[str] = []
+        amplifier = self.__view_model.amplifier
+        if amplifier is not None:
+            paths.append('data/circuit.svg')
+            amplifier.draw().save(paths[-1])
 
-        for path, drawing in drawings_and_paths:
-            drawing.save(path)
+            paths.append('data/circuit_equivalent.svg')
+            amplifier.draw_equivalent().save(paths[-1])
+
+            paths.append('data/graph.svg')
+            self.__view_model.generate_graphic(paths[-1])
+        else:
+            paths.append('data/circuit.svg')
+            self.__view_model.amplifier_class.draw_void().save(paths[-1])
+
+        for path in paths:
             svg_widget = QtSvg.QSvgWidget(path)
             svg_widget.renderer().setAspectRatioMode(QtCore.Qt.KeepAspectRatio)
+            svg_widget.setSizePolicy(
+                QtWidgets.QSizePolicy.Expanding,
+                QtWidgets.QSizePolicy.Expanding
+            )
             self.circuits_layout.addWidget(svg_widget)

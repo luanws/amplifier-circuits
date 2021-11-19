@@ -13,8 +13,11 @@
         "Avnl",
         "isnumeric",
         "pymenu",
+        "pyplot",
         "qtawesome",
-        "schemdraw"
+        "schemdraw",
+        "xlabel",
+        "ylabel"
     ],
     "python.linting.flake8Enabled": false,
     "python.linting.mypyEnabled": true,
