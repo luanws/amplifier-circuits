@@ -15,7 +15,7 @@ QLineEdit {
     padding: 8px;
     border: none;
     border-radius: 8px;
-    background-color: white;
+    background-color: @containerBackgroundColor;
     color: black;
     font-size: 10pt;
 }
