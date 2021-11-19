@@ -34,6 +34,9 @@
      <widget class="QComboBox" name="amplifier_polarizations_combo_box"/>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="circuits_layout"/>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="parameters_layout"/>
     </item>
     <item>
@@ -43,19 +46,6 @@
       </property>
       <property name="text">
        <string>Calcular</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="circuits_layout"/>
-    </item>
-    <item>
-     <widget class="QWidget" name="widget" native="true">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
       </property>
      </widget>
     </item>
