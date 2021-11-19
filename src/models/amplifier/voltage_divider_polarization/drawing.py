@@ -56,7 +56,7 @@ def draw_void():
     drawing += elm.Capacitor().right().label('C2')
     drawing += elm.Dot()
 
-    return drawing.draw()
+    return drawing
 
 
 def draw(amplifier_input: Input):
@@ -65,7 +65,6 @@ def draw(amplifier_input: Input):
     Rc = str(round(amplifier_input.Rc, 2))
     Re = str(round(amplifier_input.Re, 2))
     Vcc = str(round(amplifier_input.Vcc, 2))
-
 
     drawing = Drawing()
 
@@ -118,4 +117,4 @@ def draw(amplifier_input: Input):
     drawing += elm.Capacitor().right().label('C2')
     drawing += elm.Dot()
 
-    return drawing.draw()
+    return drawing

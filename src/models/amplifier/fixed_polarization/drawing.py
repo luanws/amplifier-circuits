@@ -43,7 +43,7 @@ def draw_void():
     drawing += elm.Line().down().length(drawing.unit/5)
     drawing += elm.Ground()
 
-    return drawing.draw()
+    return drawing
 
 
 def draw(amplifier_input: Input):
@@ -85,4 +85,4 @@ def draw(amplifier_input: Input):
     drawing += elm.Line().down().length(drawing.unit/5)
     drawing += elm.Ground()
 
-    return drawing.draw()
+    return drawing

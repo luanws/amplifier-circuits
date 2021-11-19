@@ -18,7 +18,7 @@ def draw_equivalent_model_void():
     drawing += elm.Resistor().down().label('Rl')
     drawing += elm.Ground()
 
-    return drawing.draw()
+    return drawing
 
 
 def draw_equivalent_model(output: Output):
@@ -37,4 +37,4 @@ def draw_equivalent_model(output: Output):
     drawing += elm.Resistor().down().label('Rl')
     drawing += elm.Ground()
 
-    return drawing.draw()
+    return drawing

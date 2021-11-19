@@ -22,5 +22,9 @@ class Amplifier(_Amplifier):
         Avnl = -Zo/re
         return Output(re, Zi, Zo, Avnl)
 
+    @staticmethod
+    def draw_void():
+        return drawing.draw_void()
+
     def draw(self):
         return drawing.draw(self.input)
