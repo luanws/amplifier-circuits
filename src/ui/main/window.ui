@@ -38,6 +38,9 @@
     </item>
     <item>
      <widget class="QPushButton" name="calculate_push_button">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="text">
        <string>Calcular</string>
       </property>

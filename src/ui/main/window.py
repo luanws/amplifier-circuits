@@ -16,6 +16,7 @@ class Ui_MainWindow(object):
         self.parameters_layout.setObjectName("parameters_layout")
         self.verticalLayout.addLayout(self.parameters_layout)
         self.calculate_push_button = QtWidgets.QPushButton(self.centralwidget)
+        self.calculate_push_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.calculate_push_button.setObjectName("calculate_push_button")
         self.verticalLayout.addWidget(self.calculate_push_button)
         self.circuits_layout = QtWidgets.QHBoxLayout()
