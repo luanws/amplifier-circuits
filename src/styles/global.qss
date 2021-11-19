@@ -24,7 +24,7 @@ QTextEdit {
     padding: 8px;
     border: none;
     border-radius: 8px;
-    background-color: white;
+    background-color: @containerBackgroundColor;
     color: black;
     font-size: 10pt;
 }
@@ -47,8 +47,8 @@ QComboBox {
     padding: 8px;
     border: none;
     border-radius: 8px;
-    background-color: white;
-    color: black;
+    background-color: @containerBackgroundColor;
+    color: @textColor;
     font-size: 10pt;
 }
 
