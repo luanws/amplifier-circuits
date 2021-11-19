@@ -1,4 +1,4 @@
-from PyQt5 import QtGui
+from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
 from src.ui.main.view_model import MainViewModel
 from src.ui.main.widgets.amplifier_input_widget import AmplifierInputWidget
@@ -33,12 +33,32 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def configure_events(self):
         self.amplifier_polarizations_combo_box.currentTextChanged.connect(
             self.on_change_polarization)
+        self.calculate_push_button.clicked.connect(self.calculate)
 
     def on_change_polarization(self):
         polarization = self.amplifier_polarizations_combo_box.currentText()
         self.__view_model.set_amplifier_class_by_polarization_name(
             polarization)
         self.render_inputs()
+
+    def calculate(self):
+        try:
+            parameters = self.amplifier_input_widget.get_parameters_dict()
+            output = self.__view_model.calculate(parameters)
+            self.amplifier_output_widget.output = output
+        except ValueError as e:
+            self.show_error(
+                'Dados de entrada incorretos',
+                'Preencha os dados de entrada corretamente'
+            )
+
+    def show_error(self, error: str, information: str):
+        message_box = QtWidgets.QMessageBox()
+        message_box.setText(error)
+        message_box.setIcon(QtWidgets.QMessageBox.Critical)
+        message_box.setWindowTitle('Erro')
+        message_box.setDetailedText(information)
+        message_box.exec_()
 
     def render_inputs(self):
         parameter_names = self.__view_model.amplifier_class.input.get_parameter_names()

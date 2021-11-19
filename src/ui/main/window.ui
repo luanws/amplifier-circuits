@@ -37,9 +37,9 @@
      <layout class="QHBoxLayout" name="parameters_layout"/>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="calculate_push_button">
       <property name="text">
-       <string>PushButton</string>
+       <string>Calcular</string>
       </property>
      </widget>
     </item>

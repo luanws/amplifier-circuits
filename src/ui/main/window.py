@@ -15,9 +15,9 @@ class Ui_MainWindow(object):
         self.parameters_layout = QtWidgets.QHBoxLayout()
         self.parameters_layout.setObjectName("parameters_layout")
         self.verticalLayout.addLayout(self.parameters_layout)
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout.addWidget(self.pushButton)
+        self.calculate_push_button = QtWidgets.QPushButton(self.centralwidget)
+        self.calculate_push_button.setObjectName("calculate_push_button")
+        self.verticalLayout.addWidget(self.calculate_push_button)
         self.widget = QtWidgets.QWidget(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Circuitos amplificadores"))
-        self.pushButton.setText(_translate("MainWindow", "PushButton"))
+        self.calculate_push_button.setText(_translate("MainWindow", "Calcular"))
         self.actionSair.setText(_translate("MainWindow", "Sair"))
         self.action_about.setText(_translate("MainWindow", "Sobre"))
         self.actionVerificar_se_h_atualiza_es.setText(_translate("MainWindow", "Verificar se há atualizações"))

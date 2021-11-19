@@ -3,6 +3,7 @@ from typing import Dict, List, Type
 from src.models.amplifier import (Amplifier, fixed_polarization,
                                   follower_emitter_polarization,
                                   voltage_divider_polarization)
+from src.models.amplifier.input import Input
 
 
 class MainViewModel:
@@ -22,3 +23,8 @@ class MainViewModel:
 
     def set_amplifier_class_by_polarization_name(self, polarization: str) -> None:
         self.amplifier_class = self.amplifiers_dict[polarization]
+
+    def calculate(self, parameters: Dict[str, str]) -> Input:
+        for key in parameters.keys():
+            parameters[key] = float(parameters[key])
+        return self.amplifier_class(**parameters)()

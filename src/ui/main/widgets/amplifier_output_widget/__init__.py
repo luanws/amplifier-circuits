@@ -31,5 +31,17 @@ class AmplifierOutputWidget(QtWidgets.QWidget):
                 self,
                 parameter_name=parameter_name,
             )
+            if self.__output is not None:
+                value = self.output.__dict__[parameter_name]
+                output_field_widget.value = value
             self.__output_field_widgets.append(output_field_widget)
             self.__layout.addWidget(output_field_widget)
+
+    @property
+    def output(self) -> Optional[Output]:
+        return self.__output
+
+    @output.setter
+    def output(self, output: Output):
+        self.__output = output
+        self.render()
