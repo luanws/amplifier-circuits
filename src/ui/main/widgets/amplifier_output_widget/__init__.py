@@ -1,12 +1,35 @@
+from typing import List, Optional
+
 from PyQt5 import QtWidgets
+from src.models.amplifier.output import Output
+from src.ui.main.widgets.amplifier_output_widget.amplifier_output_field_widget import \
+    AmplifierOutputFieldWidget
 
 
 class AmplifierOutputWidget(QtWidgets.QWidget):
+    __output: Optional[Output] = None
+    __output_field_widgets: List[AmplifierOutputFieldWidget] = []
+    __layout: QtWidgets.QVBoxLayout
+
     def __init__(self, parent=None):
         super().__init__(parent)
 
         self.__layout = QtWidgets.QVBoxLayout()
         self.__layout.setContentsMargins(0, 0, 0, 0)
         self.__layout.setSpacing(0)
-
         self.setLayout(self.__layout)
+        self.render()
+
+    def render(self):
+        parameter_names = Output.get_parameter_names()
+        for output_field_widget in self.__output_field_widgets:
+            self.__layout.removeWidget(output_field_widget)
+        self.__output_field_widgets = []
+
+        for parameter_name in parameter_names:
+            output_field_widget = AmplifierOutputFieldWidget(
+                self,
+                parameter_name=parameter_name,
+            )
+            self.__output_field_widgets.append(output_field_widget)
+            self.__layout.addWidget(output_field_widget)

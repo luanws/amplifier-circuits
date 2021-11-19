@@ -14,6 +14,8 @@ class AmplifierInputWidget(QtWidgets.QWidget):
         super().__init__(parent)
 
         self.__layout = QtWidgets.QVBoxLayout()
+        self.__layout.setContentsMargins(0, 0, 0, 0)
+        self.__layout.setSpacing(0)
         self.setLayout(self.__layout)
         self.render()
 

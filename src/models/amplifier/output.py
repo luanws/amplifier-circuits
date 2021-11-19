@@ -1,4 +1,5 @@
 from abc import ABC
+from typing import List
 
 
 class Output(ABC):
@@ -23,3 +24,7 @@ class Output(ABC):
 
     def __repr__(self) -> str:
         return self.__str__()
+
+    @staticmethod
+    def get_parameter_names() -> List[str]:
+        return ['re', 'Zi', 'Zo', 'Avnl']
