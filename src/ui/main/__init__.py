@@ -64,6 +64,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 'Dados de entrada incorretos',
                 'Preencha os dados de entrada corretamente'
             )
+        except ZeroDivisionError:
+            self.show_error(
+                'Divisão por 0',
+                'Não é possível dividir por zero'
+            )
+        except Exception:
+            self.show_error(
+                'Dados de entrada incorretos',
+                'Preencha os dados de entrada corretamente'
+            )
 
     def show_error(self, error: str, information: str):
         message_box = QtWidgets.QMessageBox()
