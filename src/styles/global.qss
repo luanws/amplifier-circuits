@@ -1,4 +1,4 @@
-QMainWindow {
+QMainWindow, QMessageBox {
     background-color: @backgroundColor;
 }
 
