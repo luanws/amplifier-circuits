@@ -4,7 +4,7 @@ from src.models.amplifier.input import Input as _Input
 
 
 class Input(_Input):
-    Vcc: float
+    Vdd: float
     Vgg: float
     Vp: float
     Idss: float
@@ -12,8 +12,8 @@ class Input(_Input):
     Rd: float
     Rg: float
 
-    def __init__(self, Vcc: float, Vgg: float, Vp: float, Idss: float, rd: float, Rd: float, Rg: float):
-        self.Vcc = Vcc
+    def __init__(self, Vdd: float, Vgg: float, Vp: float, Idss: float, rd: float, Rd: float, Rg: float):
+        self.Vdd = Vdd
         self.Vgg = Vgg
         self.Vp = Vp
         self.Idss = Idss
@@ -23,4 +23,4 @@ class Input(_Input):
 
     @staticmethod
     def get_parameter_names() -> List[str]:
-        return ['Vcc', 'Vgg', 'Vp', 'Idss', 'rd', 'Rd', 'Rg']
+        return ['Vdd', 'Vgg', 'Vp', 'Idss', 'rd', 'Rd', 'Rg']

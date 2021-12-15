@@ -7,14 +7,14 @@ from .output import Output
 
 class Amplifier(_Amplifier):
     input: Input = Input(0, 0, 0, 0, 0, 0, 0)
-    output: Output = Output(0, 0, 0)
+    output: Output = Output(0, 0, 0, 0)
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__()
         self.input = Input(*args, **kwargs)
 
     def __call__(self) -> Output:
-        Vcc = self.input.Vcc
+        Vdd = self.input.Vdd
         Vgg = self.input.Vgg
         Vp = self.input.Vp
         Idss = self.input.Idss
@@ -22,13 +22,13 @@ class Amplifier(_Amplifier):
         Rd = self.input.Rd
         Rg = self.input.Rg
 
-        Ibq = (Vcc - 0.7)/Rb
-        Ieq = (self.input.beta + 1)*Ibq
+        Vgsq = -Vgg
+        gm = (2*Idss/abs(Vp))*(1 - (Vgsq/Vp))
 
         Zi = Rg
         Zo = 1/((1/rd) + (1/Rd))
         Avnl = -gm*Zo
-        return Output(re, Zi, Zo, Avnl)
+        return Output(gm, Zi, Zo, Avnl)
 
     @staticmethod
     def draw_void():
