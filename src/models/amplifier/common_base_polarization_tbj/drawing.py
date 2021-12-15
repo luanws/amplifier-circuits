@@ -1,5 +1,5 @@
 from schemdraw import Drawing
-from schemdraw.elements import elm
+from schemdraw import elements as elm
 
 from .input import Input
 
