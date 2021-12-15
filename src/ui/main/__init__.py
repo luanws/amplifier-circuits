@@ -1,3 +1,4 @@
+import traceback
 from typing import List, Optional
 
 from PyQt5 import QtCore, QtGui, QtSvg, QtWidgets
@@ -70,6 +71,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 'Não é possível dividir por zero'
             )
         except Exception:
+            traceback.print_exc()
             self.show_error(
                 'Dados de entrada incorretos',
                 'Preencha os dados de entrada corretamente'
