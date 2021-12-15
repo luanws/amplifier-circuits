@@ -8,13 +8,14 @@ def draw_void():
     drawing = Drawing()
 
     drawing += (transistor := elm.transistors.JFetP().reverse().right())
-    drawing += elm.Line().left().length(drawing.unit/2)
+    drawing += elm.Line().left()
 
     drawing.push()
     drawing += elm.Dot()
-    drawing += elm.Resistor().down().label('Rg')
-    drawing += elm.SourceV().down().label('Vgg').length(drawing.unit/2)
-    drawing += elm.Ground()
+    drawing += elm.Line().up().length(drawing.unit*0.3)
+    drawing += elm.Resistor().up().label('Rg')
+    drawing += elm.SourceV().up().label('Vgg').length(drawing.unit/2)
+    drawing += elm.Ground().left()
 
     drawing.pop()
     drawing += elm.Capacitor().left()
@@ -24,49 +25,45 @@ def draw_void():
     drawing += elm.SourceV().label('Vdd').reverse().length(drawing.unit/2)
     drawing += elm.Ground().left()
 
-    drawing += elm.Line().down().at(transistor.source).length(drawing.unit/2)
-    drawing += elm.Line().down().length(0.86*drawing.unit)
+    drawing += elm.Line().at(transistor.source).down().length(drawing.unit/8)
     drawing += elm.Ground()
 
     drawing += elm.Capacitor().right().at(transistor.drain).label('C2')
     drawing += elm.Dot().label('Vo')
-
-    drawing += elm.Dot().at(transistor.gate).label('G')
-    drawing += elm.Dot().at(transistor.drain).label('D').up()
-    drawing += elm.Dot().at(transistor.source).label('S').down()
 
     return drawing
 
 
 def draw(amplifier_input: Input):
+    Vdd = amplifier_input.Vdd
+    Vgg = amplifier_input.Vgg
+    Rd = amplifier_input.Rd
+    Rg = amplifier_input.Rg
+
     drawing = Drawing()
 
     drawing += (transistor := elm.transistors.JFetP().reverse().right())
-    drawing += elm.Line().left().length(drawing.unit/2)
+    drawing += elm.Line().left()
 
     drawing.push()
     drawing += elm.Dot()
-    drawing += elm.Resistor().down().label('Rg')
-    drawing += elm.SourceV().down().label('Vgg').length(drawing.unit/2)
-    drawing += elm.Ground()
+    drawing += elm.Line().up().length(drawing.unit*0.3)
+    drawing += elm.Resistor().up().label(str(Rg))
+    drawing += elm.SourceV().up().label(str(Vgg)).length(drawing.unit/2)
+    drawing += elm.Ground().left()
 
     drawing.pop()
     drawing += elm.Capacitor().left()
     drawing += elm.Dot().label('Vi')
 
-    drawing += elm.Resistor().up().at(transistor.drain).label('Rd')
-    drawing += elm.SourceV().label('Vdd').reverse().length(drawing.unit/2)
+    drawing += elm.Resistor().up().at(transistor.drain).label(str(Rd))
+    drawing += elm.SourceV().label(str(Vdd)).reverse().length(drawing.unit/2)
     drawing += elm.Ground().left()
 
-    drawing += elm.Line().down().at(transistor.source).length(drawing.unit/2)
-    drawing += elm.Line().down().length(0.86*drawing.unit)
+    drawing += elm.Line().at(transistor.source).down().length(drawing.unit/8)
     drawing += elm.Ground()
 
     drawing += elm.Capacitor().right().at(transistor.drain).label('C2')
     drawing += elm.Dot().label('Vo')
-
-    drawing += elm.Dot().at(transistor.gate).label('G')
-    drawing += elm.Dot().at(transistor.drain).label('D').up()
-    drawing += elm.Dot().at(transistor.source).label('S').down()
 
     return drawing
