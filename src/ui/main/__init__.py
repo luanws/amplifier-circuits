@@ -36,6 +36,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.configure_events()
         self.render_inputs()
+        self.render_outputs()
         self.render_svg_graphics()
 
     def configure_events(self):
@@ -49,6 +50,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.__view_model.set_amplifier_class_by_polarization_name(
             polarization)
         self.render_inputs()
+        self.render_outputs()
         self.render_svg_graphics()
         self.amplifier_output_widget.clear()
 
@@ -88,6 +90,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def render_inputs(self):
         parameter_names = self.__view_model.amplifier_class.input.get_parameter_names()
         self.amplifier_input_widget.parameter_names = parameter_names
+
+    def render_outputs(self):
+        parameter_names = self.__view_model.amplifier_class.output.get_parameter_names()
+        self.amplifier_output_widget.parameter_names = parameter_names
 
     def render_svg_graphics(self):
         for i in reversed(range(self.circuits_layout.count())):

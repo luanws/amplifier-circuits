@@ -9,6 +9,7 @@ from .output import Output
 
 class Amplifier(ABC):
     input: Input
+    output: Output
 
     @abstractstaticmethod
     def draw_void() -> Drawing:

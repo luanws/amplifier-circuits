@@ -7,7 +7,7 @@ from .output import Output
 
 class Amplifier(_Amplifier):
     input: Input = Input(0, 0, 0, 0, 0, 0, 0)
-    output: Output = Output(0, 0, 0, 0)
+    output: Output = Output(0, 0, 0)
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__()
@@ -15,24 +15,19 @@ class Amplifier(_Amplifier):
 
     def __call__(self) -> Output:
         Vcc = self.input.Vcc
-        beta = self.input.beta
-        ro = self.input.ro
-        R1 = self.input.R1
-        R2 = self.input.R2
-        Rc = self.input.Rc
-        Re = self.input.Re
+        Vgg = self.input.Vgg
+        Vp = self.input.Vp
+        Idss = self.input.Idss
+        rd = self.input.rd
+        Rd = self.input.Rd
+        Rg = self.input.Rg
 
-        R_line = 1/((1/R1) + (1/R2))
-        Vb = Vcc*R2/(R1 + R2)
-        Vbe = 0.7
-        Ve = Vb - Vbe
-        Ieq = Ve/Re
+        Ibq = (Vcc - 0.7)/Rb
+        Ieq = (self.input.beta + 1)*Ibq
 
-        Zo = 1/((1/ro) + (1/Rc))
-        re = 26e-3/Ieq
-        Zi = 1/((1/R_line) + (1/(beta*re)))
-        Avnl = -Zo/re
-
+        Zi = Rg
+        Zo = 1/((1/rd) + (1/Rd))
+        Avnl = -gm*Zo
         return Output(re, Zi, Zo, Avnl)
 
     @staticmethod

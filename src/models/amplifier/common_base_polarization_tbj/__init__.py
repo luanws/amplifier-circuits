@@ -1,12 +1,13 @@
 from src.models.amplifier import Amplifier as _Amplifier
-from src.models.amplifier.output import Output
 
 from . import drawing
 from .input import Input
+from .output import Output
 
 
 class Amplifier(_Amplifier):
     input: Input = Input(0, 0, 0, 0, 0, 0)
+    output: Output = Output(0, 0, 0, 0)
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__()
