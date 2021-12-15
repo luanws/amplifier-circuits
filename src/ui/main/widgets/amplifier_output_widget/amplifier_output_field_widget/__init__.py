@@ -30,4 +30,5 @@ class AmplifierOutputFieldWidget(QtWidgets.QWidget):
     @value.setter
     def value(self, value: Optional[float]):
         self.__value = value
-        self.line_edit.setText(str(value))
+        value_str = '%.4g' % value
+        self.line_edit.setText(value_str)
