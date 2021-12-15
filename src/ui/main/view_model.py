@@ -2,18 +2,18 @@ from typing import Dict, List, Optional, Type
 
 import numpy as np
 from matplotlib import pyplot as plt
-from src.models.amplifier import (Amplifier, fixed_polarization,
-                                  follower_emitter_polarization,
-                                  voltage_divider_polarization)
+from src.models.amplifier import (Amplifier, fixed_polarization_tbj,
+                                  follower_emitter_polarization_tbj,
+                                  voltage_divider_polarization_tbj)
 
 
 class MainViewModel:
     amplifier_class: Type[Amplifier]
     amplifier: Optional[Amplifier] = None
     amplifiers_dict: Dict[str, Type[Amplifier]] = {
-        "Polarização fixa": fixed_polarization.Amplifier,
-        "Polarização seguidor emissor": follower_emitter_polarization.Amplifier,
-        "Polarização por divisor de tensão": voltage_divider_polarization.Amplifier
+        "Polarização fixa TBJ": fixed_polarization_tbj.Amplifier,
+        "Polarização seguidor emissor TBJ": follower_emitter_polarization_tbj.Amplifier,
+        "Polarização por divisor de tensão TBJ": voltage_divider_polarization_tbj.Amplifier
     }
 
     def __init__(self) -> None:
