@@ -92,8 +92,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.amplifier_input_widget.parameter_names = parameter_names
 
     def render_outputs(self):
-        parameter_names = self.__view_model.amplifier_class.output.get_parameter_names()
-        self.amplifier_output_widget.parameter_names = parameter_names
+        output = self.__view_model.amplifier_class.output
+        self.amplifier_output_widget.output = output
 
     def render_svg_graphics(self):
         for i in reversed(range(self.circuits_layout.count())):

@@ -41,11 +41,6 @@ class AmplifierOutputWidget(QtWidgets.QWidget):
     def parameter_names(self):
         return self.__parameter_names
 
-    @parameter_names.setter
-    def parameter_names(self, parameter_names: List[str]):
-        self.__parameter_names = parameter_names
-        self.render()
-
     @property
     def output(self) -> Optional[Output]:
         return self.__output
@@ -53,6 +48,7 @@ class AmplifierOutputWidget(QtWidgets.QWidget):
     @output.setter
     def output(self, output: Output):
         self.__output = output
+        self.__parameter_names = output.get_parameter_names()
         self.render()
 
     def clear(self):
