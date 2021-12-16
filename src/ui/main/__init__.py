@@ -37,6 +37,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.configure_events()
         self.render_inputs()
         self.render_outputs()
+        self.amplifier_output_widget.clear()
         self.render_svg_graphics()
 
     def configure_events(self):
