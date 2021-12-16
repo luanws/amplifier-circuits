@@ -18,6 +18,7 @@
         "pyplot",
         "qtawesome",
         "schemdraw",
+        "sympy",
         "Vgsq",
         "xlabel",
         "ylabel"

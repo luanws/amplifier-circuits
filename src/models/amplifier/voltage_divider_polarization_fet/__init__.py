@@ -1,3 +1,4 @@
+import sympy as sp
 from src.models.amplifier import Amplifier as _Amplifier
 
 from . import drawing
@@ -23,10 +24,15 @@ class Amplifier(_Amplifier):
         Idss = self.input.Idss
         rd = self.input.rd
 
-        Id = Vdd/(Rd + Rs)
         Vg = Vdd*R2/(R1+R2)
-        Vs = Id*Rs
-        Vgs = Vg - Vs
+
+        Vgs = sp.Symbol('Vgs')
+        equation = Vg - Rs*Idss*(1 - Vgs/Vp)**2 - Vgs
+        Vgs1, Vgs2 = sp.solve(equation, Vgs)
+        Vgs1, Vgs2 = float(Vgs1), float(Vgs2)
+        Vgs1, Vgs2
+        Vgs = Vgs1 if Vgs1 < 0 and Vgs1 > Vp else Vgs2
+
         gm = (2*Idss/abs(Vp))*(1 - (Vgs/Vp))
 
         Zi = 1/(1/R1 + 1/R2)
