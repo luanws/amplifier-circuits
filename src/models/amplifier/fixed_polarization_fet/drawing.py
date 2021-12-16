@@ -28,7 +28,8 @@ def draw_void():
     drawing += elm.Line().at(transistor.source).down().length(drawing.unit/8)
     drawing += elm.Ground()
 
-    drawing += elm.Capacitor().right().at(transistor.drain).label('C2')
+    drawing += elm.Dot().at(transistor.drain)
+    drawing += elm.Capacitor().right().label('C2')
     drawing += elm.Dot().label('Vo')
 
     return drawing
@@ -63,7 +64,8 @@ def draw(amplifier_input: Input):
     drawing += elm.Line().at(transistor.source).down().length(drawing.unit/8)
     drawing += elm.Ground()
 
-    drawing += elm.Capacitor().right().at(transistor.drain).label('C2')
+    drawing += elm.Dot().at(transistor.drain)
+    drawing += elm.Capacitor().right().label('C2')
     drawing += elm.Dot().label('Vo')
 
     return drawing
