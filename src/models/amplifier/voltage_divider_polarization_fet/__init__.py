@@ -23,8 +23,11 @@ class Amplifier(_Amplifier):
         Idss = self.input.Idss
         rd = self.input.rd
 
-        Vgsq = Vdd
-        gm = (2*Idss/abs(Vp))*(1 - (Vgsq/Vp))
+        Id = Vdd/(Rd + Rs)
+        Vg = Vdd*R2/(R1+R2)
+        Vs = Id*Rs
+        Vgs = Vg - Vs
+        gm = (2*Idss/abs(Vp))*(1 - (Vgs/Vp))
 
         Zi = 1/(1/R1 + 1/R2)
         Zo = 1/((1/rd) + (1/Rd))
