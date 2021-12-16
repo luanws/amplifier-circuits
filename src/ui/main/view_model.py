@@ -3,6 +3,7 @@ from typing import Dict, List, Optional, Type
 import numpy as np
 from matplotlib import pyplot as plt
 from src.models.amplifier import (Amplifier, common_base_polarization_tbj,
+                                  common_drain_polarization_fet,
                                   fixed_polarization_fet,
                                   fixed_polarization_tbj,
                                   follower_emitter_polarization_tbj,
@@ -20,6 +21,7 @@ class MainViewModel:
         "Polarização base comum TBJ": common_base_polarization_tbj.Amplifier,
         "Polarização fixa FET": fixed_polarization_fet.Amplifier,
         "Polarização por divisor de tensão FET": voltage_divider_polarization_fet.Amplifier,
+        "Polarização dreno comum FET": common_drain_polarization_fet.Amplifier,
     }
 
     def __init__(self) -> None:
