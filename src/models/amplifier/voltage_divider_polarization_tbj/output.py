@@ -1,4 +1,3 @@
-from abc import ABC
 from typing import List
 
 from src.models.amplifier.output import Output as _Output
