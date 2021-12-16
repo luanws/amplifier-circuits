@@ -10,15 +10,17 @@ class Input(_Input):
     Vp: float
     Idss: float
     rd: float
+    Idq: float
 
-    def __init__(self, Vdd: float, Rg: float, Rs: float, Vp: float, Idss: float, rd: float):
+    def __init__(self, Vdd: float, Rg: float, Rs: float, Vp: float, Idss: float, rd: float, Idq: float):
         self.Vdd = Vdd
         self.Rg = Rg
         self.Rs = Rs
         self.Vp = Vp
         self.Idss = Idss
         self.rd = rd
+        self.Idq = Idq
 
     @staticmethod
     def get_parameter_names() -> List[str]:
-        return ['Vdd', 'Rg', 'Rs', 'Vp', 'Idss', 'rd']
+        return ['Vdd', 'Vp', 'Idss', 'rd', 'Rg', 'Rs', 'Idq']
