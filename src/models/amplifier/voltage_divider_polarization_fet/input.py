@@ -25,4 +25,4 @@ class Input(_Input):
 
     @staticmethod
     def get_parameter_names() -> List[str]:
-        return ['Vdd', 'R1', 'R2', 'Rd', 'Rs', 'Vp', 'Idss', 'rd']
+        return ['Vdd', 'Vp', 'Idss', 'rd', 'R1', 'R2', 'Rd', 'Rs']
