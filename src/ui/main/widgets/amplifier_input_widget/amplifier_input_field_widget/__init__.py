@@ -1,16 +1,19 @@
 from PyQt5 import QtCore, QtWidgets
+from src.utils import numerize
 
 
 class AmplifierInputFieldWidget(QtWidgets.QWidget):
     __parameter_name: str
+    __unit: str
 
-    def __init__(self, parent=None, *, parameter_name: str):
+    def __init__(self, parent=None, *, parameter_name: str, unit: str = ''):
         super().__init__(parent)
 
         self.__parameter_name = parameter_name
+        self.__unit = unit
 
-        self.layout = QtWidgets.QHBoxLayout()
-        self.layout.setAlignment(QtCore.Qt.AlignLeft)
+        self.main_layout = QtWidgets.QHBoxLayout()
+        self.main_layout.setAlignment(QtCore.Qt.AlignLeft)
 
         self.label = QtWidgets.QLabel()
         self.label.setText(parameter_name)
@@ -18,14 +21,24 @@ class AmplifierInputFieldWidget(QtWidgets.QWidget):
 
         self.line_edit = QtWidgets.QLineEdit()
 
-        self.layout.addWidget(self.label)
-        self.layout.addWidget(self.line_edit)
-        self.setLayout(self.layout)
+        self.main_layout.addWidget(self.label)
+        self.main_layout.addWidget(self.line_edit)
+        self.setLayout(self.main_layout)
 
     @property
     def parameter_name(self) -> str:
         return self.__parameter_name
 
     @property
-    def value(self) -> str:
-        return self.line_edit.text()
+    def value(self) -> float:
+        value_str = self.line_edit.text()
+        value = numerize.revert(value_str, unit=self.__unit)
+        return value
+
+    @value.setter
+    def value(self, value: float):
+        value_str = numerize.format(value, unit=self.__unit, precision=4)
+        self.line_edit.setText(value_str)
+
+    def format(self):
+        self.value = self.value

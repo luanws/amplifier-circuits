@@ -1,5 +1,3 @@
-from typing import List
-
 from src.models.amplifier.input import Input as _Input
 
 
@@ -22,5 +20,9 @@ class Input(_Input):
         self.Idq = Idq
 
     @staticmethod
-    def get_parameter_names() -> List[str]:
+    def get_parameter_names() -> list[str]:
         return ['Vdd', 'Vp', 'Idss', 'rd', 'Rg', 'Rs', 'Idq']
+
+    @staticmethod
+    def get_parameter_units() -> list[str]:
+        return ['V', 'V', 'A', 'Ω', 'Ω', 'Ω', 'A']

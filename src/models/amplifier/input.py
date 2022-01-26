@@ -1,8 +1,11 @@
 from abc import ABC, abstractstaticmethod
-from typing import List
 
 
 class Input(ABC):
     @abstractstaticmethod
-    def get_parameter_names() -> List[str]:
+    def get_parameter_names(self) -> list[str]:
+        pass
+
+    @abstractstaticmethod
+    def get_parameter_units(self) -> list[str]:
         pass

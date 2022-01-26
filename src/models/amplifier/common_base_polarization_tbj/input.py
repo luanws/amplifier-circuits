@@ -1,5 +1,3 @@
-from typing import List
-
 from src.models.amplifier.input import Input as _Input
 
 
@@ -21,5 +19,9 @@ class Input(_Input):
         self.ro = ro
 
     @staticmethod
-    def get_parameter_names() -> List[str]:
+    def get_parameter_names() -> list[str]:
         return ['Vcc', 'beta', 'ro', 'R1', 'R2', 'Re']
+
+    @staticmethod
+    def get_parameter_units() -> list[str]:
+        return ['V', '', 'Ω', 'Ω', 'Ω', 'Ω']

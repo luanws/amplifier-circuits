@@ -56,6 +56,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def calculate(self):
         try:
             parameters = self.amplifier_input_widget.get_parameters_dict()
+            self.amplifier_input_widget.format_parameters()
             self.__view_model.amplifier = self.__view_model.get_amplifier(
                 parameters)
             output = self.__view_model.amplifier()
@@ -88,7 +89,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def render_inputs(self):
         parameter_names = self.__view_model.amplifier_class.input.get_parameter_names()
-        self.amplifier_input_widget.parameter_names = parameter_names
+        units = self.__view_model.amplifier_class.input.get_parameter_units()
+        self.amplifier_input_widget.set_parameters(parameter_names, units)
 
     def render_outputs(self):
         output = self.__view_model.amplifier_class.output
