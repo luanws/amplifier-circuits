@@ -1,5 +1,6 @@
 from schemdraw import Drawing
 from schemdraw import elements as elm
+from src.utils import numerize
 
 from .input import Input
 
@@ -55,11 +56,11 @@ def draw_void():
 
 
 def draw(amplifier_input: Input):
-    R2 = str(round(amplifier_input.R2, 2))
-    R1 = str(round(amplifier_input.R1, 2))
-    Rc = str(round(amplifier_input.Rc, 2))
-    Re = str(round(amplifier_input.Re, 2))
-    Vcc = str(round(amplifier_input.Vcc, 2))
+    R2 = numerize.format(amplifier_input.R2, unit='Ω')
+    R1 = numerize.format(amplifier_input.R1, unit='Ω')
+    Rc = numerize.format(amplifier_input.Rc, unit='Ω')
+    Re = numerize.format(amplifier_input.Re, unit='Ω')
+    Vcc = numerize.format(amplifier_input.Vcc, unit='V')
 
     drawing = Drawing()
 

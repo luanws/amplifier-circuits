@@ -1,5 +1,6 @@
 from schemdraw import Drawing
 from schemdraw import elements as elm
+from src.utils import numerize
 
 from .input import Input
 
@@ -45,22 +46,26 @@ def draw_void():
 
 
 def draw(amplifier_input: Input):
+    Rc = numerize.format(amplifier_input.Rc, unit='Ω')
+    Rb = numerize.format(amplifier_input.Rb, unit='Ω')
+    Vcc = numerize.format(amplifier_input.Vcc, unit='V')
+
     drawing = Drawing()
 
     drawing += (transistor := elm.transistors.BjtNpn().right())
 
     drawing.push()
-    drawing += elm.Resistor().up().label(str(amplifier_input.Rc))
+    drawing += elm.Resistor().up().label(Rc)
     drawing += elm.Line().left().length(drawing.unit/2)
 
     drawing.push()
     drawing += elm.Dot()
-    drawing += elm.SourceV().up().reverse().label(str(amplifier_input.Vcc))
+    drawing += elm.SourceV().up().reverse().label(Vcc)
     drawing += elm.Ground().left()
 
     drawing.pop()
     drawing += elm.Line().left().length(drawing.unit/2)
-    drawing += elm.Resistor().down().label(str(amplifier_input.Rb))
+    drawing += elm.Resistor().down().label(Rb)
     drawing += elm.Line().down().length(0.24*drawing.unit)
     drawing += elm.Dot()
 
