@@ -44,9 +44,9 @@ def draw_void():
 
 
 def draw(amplifier_input: Input):
-    Vcc = numerize.format(amplifier_input.Vcc, 'V')
-    Rb = numerize.format(amplifier_input.Rb, 'Ω')
-    Re = numerize.format(amplifier_input.Re, 'Ω')
+    Vcc = numerize.format(amplifier_input.Vcc, unit='V')
+    Rb = numerize.format(amplifier_input.Rb, unit='Ω')
+    Re = numerize.format(amplifier_input.Re, unit='Ω')
 
     drawing = Drawing()
 
