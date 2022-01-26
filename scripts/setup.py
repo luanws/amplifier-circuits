@@ -30,6 +30,7 @@ def setup():
             '--icon=icon.ico',
             '--onefile',
             '--windowed',
+            '--exclude-module=_bootlocale',
         ])
 
         for source, destination in copy_files:
