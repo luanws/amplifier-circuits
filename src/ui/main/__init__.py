@@ -1,9 +1,7 @@
 import traceback
-from typing import List, Optional
 
 from PyQt5 import QtCore, QtGui, QtSvg, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
-from src.models.amplifier import Amplifier
 from src.ui.main.view_model import MainViewModel
 from src.ui.main.widgets.amplifier_input_widget import AmplifierInputWidget
 from src.ui.main.widgets.amplifier_output_widget import AmplifierOutputWidget
@@ -100,7 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in reversed(range(self.circuits_layout.count())):
             self.circuits_layout.itemAt(i).widget().setParent(None)
 
-        paths: List[str] = []
+        paths: list[str] = []
         amplifier = self.__view_model.amplifier
         if amplifier is not None:
             paths.append('data/circuit.svg')

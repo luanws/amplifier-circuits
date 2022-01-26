@@ -18,6 +18,7 @@
         "pyplot",
         "qtawesome",
         "schemdraw",
+        "sharex",
         "sympy",
         "Vgsq",
         "xlabel",

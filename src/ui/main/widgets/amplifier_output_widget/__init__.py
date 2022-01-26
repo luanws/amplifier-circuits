@@ -1,5 +1,3 @@
-from typing import List, Optional
-
 from PyQt5 import QtWidgets
 from src.models.amplifier.output import Output
 from src.ui.main.widgets.amplifier_output_widget.amplifier_output_field_widget import \
@@ -7,9 +5,10 @@ from src.ui.main.widgets.amplifier_output_widget.amplifier_output_field_widget i
 
 
 class AmplifierOutputWidget(QtWidgets.QWidget):
-    __parameter_names: List[str] = []
-    __output: Optional[Output] = None
-    __output_field_widgets: List[AmplifierOutputFieldWidget] = []
+    __parameter_names: list[str] = []
+    __parameter_units: list[str] = []
+    __output: Output | None = None
+    __output_field_widgets: list[AmplifierOutputFieldWidget] = []
     __layout: QtWidgets.QVBoxLayout
 
     def __init__(self, parent=None):
@@ -26,10 +25,11 @@ class AmplifierOutputWidget(QtWidgets.QWidget):
             self.__layout.removeWidget(output_field_widget)
         self.__output_field_widgets = []
 
-        for parameter_name in self.__parameter_names:
+        for parameter_name, parameter_unit in zip(self.__parameter_names, self.__parameter_units):
             output_field_widget = AmplifierOutputFieldWidget(
                 self,
                 parameter_name=parameter_name,
+                unit=parameter_unit
             )
             if self.__output is not None:
                 value = self.output.__dict__[parameter_name]
@@ -42,13 +42,14 @@ class AmplifierOutputWidget(QtWidgets.QWidget):
         return self.__parameter_names
 
     @property
-    def output(self) -> Optional[Output]:
+    def output(self) -> Output | None:
         return self.__output
 
     @output.setter
     def output(self, output: Output):
         self.__output = output
         self.__parameter_names = output.get_parameter_names()
+        self.__parameter_units = output.get_parameter_units()
         self.render()
 
     def clear(self):

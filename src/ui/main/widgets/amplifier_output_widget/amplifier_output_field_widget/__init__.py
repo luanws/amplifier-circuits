@@ -1,16 +1,18 @@
-from typing import Optional
-
 from PyQt5 import QtCore, QtWidgets
+from src.utils import numerize
 
 
 class AmplifierOutputFieldWidget(QtWidgets.QWidget):
-    __value: Optional[float]
+    __value: float | None
+    unit: str
 
-    def __init__(self, parent=None, *, parameter_name: str):
+    def __init__(self, parent=None, *, parameter_name: str, unit: str = ''):
         super().__init__(parent)
 
-        self.layout = QtWidgets.QHBoxLayout()
-        self.layout.setAlignment(QtCore.Qt.AlignLeft)
+        self.unit = unit
+
+        self.main_layout = QtWidgets.QHBoxLayout()
+        self.main_layout.setAlignment(QtCore.Qt.AlignLeft)
 
         self.label = QtWidgets.QLabel()
         self.label.setText(parameter_name)
@@ -19,16 +21,16 @@ class AmplifierOutputFieldWidget(QtWidgets.QWidget):
         self.line_edit = QtWidgets.QLineEdit()
         self.line_edit.setReadOnly(True)
 
-        self.layout.addWidget(self.label)
-        self.layout.addWidget(self.line_edit)
-        self.setLayout(self.layout)
+        self.main_layout.addWidget(self.label)
+        self.main_layout.addWidget(self.line_edit)
+        self.setLayout(self.main_layout)
 
     @property
-    def value(self) -> Optional[float]:
+    def value(self) -> float | None:
         return self.__value
 
     @value.setter
-    def value(self, value: Optional[float]):
+    def value(self, value: float | None):
         self.__value = value
-        value_str = '%.4g' % value
+        value_str = numerize.format(value, unit=self.unit)
         self.line_edit.setText(value_str)

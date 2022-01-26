@@ -5,11 +5,13 @@ def format(
     number: float, *,
     precision: int = 2,
     positive_suffixes: list[str] = ['', 'K', 'M', 'G', 'T', 'P'],
-    negative_suffixes: list[str] = ['m', 'µ', 'n', 'p'],
+    negative_suffixes: list[str] = ['m', 'u', 'n', 'p'],
     unit=''
 ) -> str:
     suffixes = positive_suffixes + negative_suffixes[::-1]
-    magnitude = int(math.floor(math.log(number, 1e3)))
+    if number == 0:
+        return '0'
+    magnitude = int(math.floor(math.log(abs(number), 1e3)))
     if magnitude <= len(positive_suffixes) - 1 and magnitude >= -len(negative_suffixes):
         number_str = f'{number/1e3**magnitude:.{precision}f}'
         number_str = number_str.strip('0').strip('.')
@@ -22,7 +24,7 @@ def format(
 def revert(
     number_str: str,
     positive_suffixes: list[str] = ['', 'K', 'M', 'G', 'T', 'P'],
-    negative_suffixes: list[str] = ['m', 'µ', 'n', 'p'],
+    negative_suffixes: list[str] = ['m', 'u', 'n', 'p'],
     unit: str = ''
 ) -> float:
     suffixes = positive_suffixes + negative_suffixes[::-1]

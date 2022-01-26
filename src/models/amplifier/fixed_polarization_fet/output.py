@@ -1,5 +1,3 @@
-from typing import List
-
 from src.models.amplifier.output import Output as _Output
 
 
@@ -27,5 +25,9 @@ class Output(_Output):
         return self.__str__()
 
     @staticmethod
-    def get_parameter_names() -> List[str]:
+    def get_parameter_names() -> list[str]:
         return ['gm', 'Zi', 'Zo', 'Avnl']
+
+    @staticmethod
+    def get_parameter_units() -> list[str]:
+        return ['S', 'Ω', 'Ω', '']
