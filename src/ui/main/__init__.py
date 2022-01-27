@@ -26,6 +26,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.amplifier_input_widget = AmplifierInputWidget(self)
         self.amplifier_output_widget = AmplifierOutputWidget(self)
+        self.amplifier_input_widget.on_return_pressed(self.calculate)
         self.input_layout.addWidget(self.amplifier_input_widget)
         self.output_layout.addWidget(self.amplifier_output_widget)
 

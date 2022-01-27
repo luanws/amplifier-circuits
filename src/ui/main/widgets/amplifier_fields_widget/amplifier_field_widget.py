@@ -5,6 +5,9 @@ from src.utils import numerize
 class AmplifierFieldWidget(QtWidgets.QWidget):
     __parameter_name: str
     __unit: str
+    main_layout: QtWidgets.QHBoxLayout
+    label: QtWidgets.QLabel
+    line_edit: QtWidgets.QLineEdit
 
     def __init__(self, parent=None, *, parameter_name: str, unit: str = ''):
         super().__init__(parent)
