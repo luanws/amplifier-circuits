@@ -15,7 +15,7 @@ class AmplifierFieldsWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        self.setFixedWidth(240)
+        self.setFixedWidth(200)
         self.__layout = QtWidgets.QVBoxLayout()
         self.__layout.setContentsMargins(0, 0, 0, 0)
         self.__layout.setSpacing(0)
