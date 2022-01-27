@@ -26,8 +26,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.amplifier_input_widget = AmplifierInputWidget(self)
         self.amplifier_output_widget = AmplifierOutputWidget(self)
-        self.parameters_layout.addWidget(self.amplifier_input_widget)
-        self.parameters_layout.addWidget(self.amplifier_output_widget)
+        self.input_layout.addWidget(self.amplifier_input_widget)
+        self.output_layout.addWidget(self.amplifier_output_widget)
 
         self.circuits_layout = QtWidgets.QHBoxLayout()
         self.graphics_widget.setLayout(self.circuits_layout)
