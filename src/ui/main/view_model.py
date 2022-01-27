@@ -1,4 +1,4 @@
-from typing import Optional, Type
+from typing import Type
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -13,7 +13,7 @@ from src.models.amplifier import (Amplifier, common_base_polarization_tbj,
 
 class MainViewModel:
     amplifier_class: Type[Amplifier]
-    amplifier: Optional[Amplifier] = None
+    amplifier: Amplifier | None = None
     amplifiers_dict: dict[str, Type[Amplifier]] = {
         "Polarização fixa TBJ": fixed_polarization_tbj.Amplifier,
         "Polarização seguidor emissor TBJ": follower_emitter_polarization_tbj.Amplifier,
