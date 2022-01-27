@@ -29,7 +29,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.input_layout.addWidget(self.amplifier_input_widget)
         self.output_layout.addWidget(self.amplifier_output_widget)
 
-        self.circuits_layout = QtWidgets.QHBoxLayout()
+        self.circuits_layout = QtWidgets.QGridLayout()
         self.graphics_widget.setLayout(self.circuits_layout)
 
         self.configure_events()
@@ -101,25 +101,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.circuits_layout.itemAt(i).widget().setParent(None)
 
         paths: list[str] = []
+        positions: list[tuple[int, int]] = []
         amplifier = self.__view_model.amplifier
         if amplifier is not None:
+            paths.append('data/circuit-void.svg')
+            positions.append((0, 0))
+            amplifier.draw_void().save(paths[-1])
+
             paths.append('data/circuit.svg')
+            positions.append((1, 0))
             amplifier.draw().save(paths[-1])
 
             paths.append('data/circuit_equivalent.svg')
+            positions.append((0, 1))
             amplifier.draw_equivalent().save(paths[-1])
 
             paths.append('data/graph.svg')
+            positions.append((1, 1))
             self.__view_model.generate_graphic(paths[-1])
         else:
             paths.append('data/circuit.svg')
+            positions.append((0, 0))
             self.__view_model.amplifier_class.draw_void().save(paths[-1])
 
-        for path in paths:
+        for path, (x, y) in zip(paths, positions):
             svg_widget = QtSvg.QSvgWidget(path)
             svg_widget.renderer().setAspectRatioMode(QtCore.Qt.KeepAspectRatio)
             svg_widget.setSizePolicy(
                 QtWidgets.QSizePolicy.Expanding,
                 QtWidgets.QSizePolicy.Expanding
             )
-            self.circuits_layout.addWidget(svg_widget)
+            self.circuits_layout.addWidget(svg_widget, x, y)
