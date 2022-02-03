@@ -21,7 +21,7 @@ def draw_void():
     drawing += elm.Ground()
 
     drawing.pop()
-    drawing += elm.Capacitor().left()
+    drawing += elm.Capacitor().label('C1').left()
     drawing += elm.Dot().label('Vi')
 
     drawing += elm.Dot().at(transistor.source).down()
@@ -31,7 +31,7 @@ def draw_void():
     drawing += elm.Ground()
 
     drawing.pop()
-    drawing += elm.Capacitor().right().label('C2')
+    drawing += elm.Capacitor().label('C2').right()
     drawing += elm.Dot().label('Vo')
 
     return drawing
@@ -57,7 +57,7 @@ def draw(amplifier_input: Input):
     drawing += elm.Ground()
 
     drawing.pop()
-    drawing += elm.Capacitor().left()
+    drawing += elm.Capacitor().label('C1').left()
     drawing += elm.Dot().label('Vi')
 
     drawing += elm.Dot().at(transistor.source).down()
@@ -67,7 +67,7 @@ def draw(amplifier_input: Input):
     drawing += elm.Ground()
 
     drawing.pop()
-    drawing += elm.Capacitor().right().label('C2')
+    drawing += elm.Capacitor().label('C2').right()
     drawing += elm.Dot().label('Vo')
 
     return drawing
