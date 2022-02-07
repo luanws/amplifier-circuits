@@ -1,5 +1,4 @@
 from abc import abstractmethod
-from typing import Type
 
 from PyQt5 import QtWidgets
 from src.ui.main.widgets.amplifier_fields_widget.amplifier_field_widget import \
@@ -15,7 +14,6 @@ class AmplifierFieldsWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        self.setFixedWidth(200)
         self.__layout = QtWidgets.QVBoxLayout()
         self.__layout.setContentsMargins(0, 0, 0, 0)
         self.__layout.setSpacing(0)

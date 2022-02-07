@@ -2,7 +2,12 @@ QMainWindow, QMessageBox {
     background-color: @backgroundColor;
 }
 
-QAbstractScrollArea #scrollAreaWidgetContents {
+QAbstractScrollArea {
+    background-color: @backgroundColor;
+    border: none;
+}
+
+QWidget #verticalLayoutWidget {
     background-color: @backgroundColor;
 }
 
@@ -104,14 +109,15 @@ QListWidget {
 }
 
 QScrollBar {
-    background: transparent;
+    background: @backgroundColorScrollBar;
+    border-radius: 4px;
     margin: 0px;
 }
 
 QScrollBar::handle {         
     border: 0px solid red;
     border-radius: 4px;
-    background-color: #b6b8bb;
+    background-color: @backgroundColorScrollBarHandle;
 }
 
 QScrollBar::add-line {
@@ -156,4 +162,9 @@ QScrollBar::add-line:horizontal {
 QScrollBar::sub-line:horizontal {
     width: 0px;
     subcontrol-position: right;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical,
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
 }

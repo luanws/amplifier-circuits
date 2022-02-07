@@ -4,3 +4,6 @@
 @textColor = white
 @arrowDownImage = url(res/img/arrow-down-white.png)
 @arrowUpImage = url(res/img/arrow-up-white.png)
+
+@backgroundColorScrollBar = #141517
+@backgroundColorScrollBarHandle = #4F4F4F
