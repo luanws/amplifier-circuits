@@ -2,13 +2,17 @@ from typing import Type
 
 import numpy as np
 from matplotlib import pyplot as plt
-from src.models.amplifier import Amplifier, simplified_fet, simplified_tbj
+from src.models.amplifier import Amplifier, simplified_fet, simplified_tbj, tbj
 
 
 class MainViewModel:
     amplifier_class: Type[Amplifier]
     amplifier: Amplifier | None = None
     amplifiers_dict: dict[str, Type[Amplifier]] = {
+        "Polarização fixa TBJ": tbj.fixed_polarization.Amplifier,
+        "Polarização seguidor emissor TBJ": tbj.follower_emitter_polarization.Amplifier,
+        "Polarização por divisor de tensão TBJ": tbj.voltage_divider_polarization.Amplifier,
+        "Polarização base comum TBJ": tbj.common_base_polarization.Amplifier,
         "Polarização fixa TBJ (NL)": simplified_tbj.fixed_polarization.Amplifier,
         "Polarização seguidor emissor TBJ (NL)": simplified_tbj.follower_emitter_polarization.Amplifier,
         "Polarização por divisor de tensão TBJ (NL)": simplified_tbj.voltage_divider_polarization.Amplifier,
