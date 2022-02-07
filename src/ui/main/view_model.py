@@ -2,26 +2,20 @@ from typing import Type
 
 import numpy as np
 from matplotlib import pyplot as plt
-from src.models.amplifier import (Amplifier, common_base_polarization_tbj,
-                                  common_drain_polarization_fet,
-                                  fixed_polarization_fet,
-                                  fixed_polarization_tbj,
-                                  follower_emitter_polarization_tbj,
-                                  voltage_divider_polarization_fet,
-                                  voltage_divider_polarization_tbj)
+from src.models.amplifier import Amplifier, simplified_fet, simplified_tbj
 
 
 class MainViewModel:
     amplifier_class: Type[Amplifier]
     amplifier: Amplifier | None = None
     amplifiers_dict: dict[str, Type[Amplifier]] = {
-        "Polarização fixa TBJ": fixed_polarization_tbj.Amplifier,
-        "Polarização seguidor emissor TBJ": follower_emitter_polarization_tbj.Amplifier,
-        "Polarização por divisor de tensão TBJ": voltage_divider_polarization_tbj.Amplifier,
-        "Polarização base comum TBJ": common_base_polarization_tbj.Amplifier,
-        "Polarização fixa FET": fixed_polarization_fet.Amplifier,
-        "Polarização por divisor de tensão FET": voltage_divider_polarization_fet.Amplifier,
-        "Polarização dreno comum FET": common_drain_polarization_fet.Amplifier,
+        "Polarização fixa TBJ": simplified_tbj.fixed_polarization.Amplifier,
+        "Polarização seguidor emissor TBJ": simplified_tbj.follower_emitter_polarization.Amplifier,
+        "Polarização por divisor de tensão TBJ": simplified_tbj.voltage_divider_polarization.Amplifier,
+        "Polarização base comum TBJ": simplified_tbj.common_base_polarization.Amplifier,
+        "Polarização fixa FET": simplified_fet.fixed_polarization.Amplifier,
+        "Polarização por divisor de tensão FET": simplified_fet.voltage_divider_polarization.Amplifier,
+        "Polarização dreno comum FET": simplified_fet.common_drain_polarization.Amplifier,
     }
 
     def __init__(self) -> None:
