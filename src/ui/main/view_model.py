@@ -9,13 +9,13 @@ class MainViewModel:
     amplifier_class: Type[Amplifier]
     amplifier: Amplifier | None = None
     amplifiers_dict: dict[str, Type[Amplifier]] = {
-        "Polarização fixa TBJ": simplified_tbj.fixed_polarization.Amplifier,
-        "Polarização seguidor emissor TBJ": simplified_tbj.follower_emitter_polarization.Amplifier,
-        "Polarização por divisor de tensão TBJ": simplified_tbj.voltage_divider_polarization.Amplifier,
-        "Polarização base comum TBJ": simplified_tbj.common_base_polarization.Amplifier,
-        "Polarização fixa FET": simplified_fet.fixed_polarization.Amplifier,
-        "Polarização por divisor de tensão FET": simplified_fet.voltage_divider_polarization.Amplifier,
-        "Polarização dreno comum FET": simplified_fet.common_drain_polarization.Amplifier,
+        "Polarização fixa TBJ (NL)": simplified_tbj.fixed_polarization.Amplifier,
+        "Polarização seguidor emissor TBJ (NL)": simplified_tbj.follower_emitter_polarization.Amplifier,
+        "Polarização por divisor de tensão TBJ (NL)": simplified_tbj.voltage_divider_polarization.Amplifier,
+        "Polarização base comum TBJ (NL)": simplified_tbj.common_base_polarization.Amplifier,
+        "Polarização fixa FET (NL)": simplified_fet.fixed_polarization.Amplifier,
+        "Polarização por divisor de tensão FET (NL)": simplified_fet.voltage_divider_polarization.Amplifier,
+        "Polarização dreno comum FET (NL)": simplified_fet.common_drain_polarization.Amplifier,
     }
 
     def __init__(self) -> None:
