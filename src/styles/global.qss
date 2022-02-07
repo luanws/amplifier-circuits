@@ -77,9 +77,12 @@ QComboBox::up-arrow, QSpinBox::up-arrow, QTimeEdit::up-arrow, QDateEdit::up-arro
 }
 
 QComboBox QListView {
-    background-color: white;
+    background-color: @containerBackgroundColor;
+    color: @textColor;
+    border-width: 1px;
+    border-color: @borderColor;
+    border-style: solid;
 }
-
 QSpinBox {
     padding: 8px;
     border: none;
