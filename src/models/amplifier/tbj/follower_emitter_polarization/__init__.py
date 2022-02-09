@@ -48,19 +48,15 @@ class Amplifier(_Amplifier):
         Cmo = Cbc*(1 - 1/Avl)
         Cho = Cwo + Cce + Cmo
 
-        Ri = 1/(1/Rb + 1/Rs)
-        Zeq = 1/(1/Re + 1/(Ri/beta + re))
-
         Fli = 1/(2*math.pi*Ci*(Zi + Rs))
         Flo = 1/(2*math.pi*Co*(Zo + Rl))
-        Fle = 1/(2*math.pi*Ce*Zeq)
 
         Fhi = 1/(2*math.pi*Chi*(1/(1/Rs + 1/Zi)))
         Fho = 1/(2*math.pi*Cho*(1/(1/Rl + 1/Zo)))
         Ft = 1/(2*math.pi*re*(Cbe + Cbc))
 
         Fh = min(Fhi, Fho, Ft)
-        Fl = max(Fli, Flo, Fle)
+        Fl = max(Fli, Flo)
 
         Av = Avnl*(Zi/(Zi + Rs))*(Rl/(Rl + Zo))
 
